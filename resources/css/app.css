@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Thème sombre */
+.dark {
+    background-color: #1a202c; /* Couleur de fond sombre */
+    color: #e2e8f0; /* Couleur de texte claire */
+}
+
+.dark .bg-white {
+    background-color: #2d3748; /* Couleur de fond sombre pour les éléments blancs */
+    color: #e2e8f0; /* Couleur de texte claire */
+}
+
+.dark .text-gray-800 {
+    color: #e2e8f0; /* Couleur de texte claire pour les éléments gris foncé */
+}
+
+.dark .bg-blue-500 {
+    background-color: #4299e1; /* Couleur bleue pour les boutons */
+}
+
+.dark .bg-blue-600:hover {
+    background-color: #3182ce; /* Couleur bleue au survol */
+}
