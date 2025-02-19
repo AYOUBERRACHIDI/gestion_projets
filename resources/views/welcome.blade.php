@@ -92,60 +92,111 @@
 </head>
 <body class="bg-gray-100">
     <!-- Navbar -->
-    <nav class="navbar fixed w-full z-50">
+<div class="relative w-full h-screen overflow-hidden">
+    <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+        <source src="/video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    
+
+    <nav class="absolute top-0 left-0 w-full z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="text-2xl font-bold text-gray-800">
+                
+                <div class="text-2xl font-bold text-white">
                     <a href="#" class="flex items-center">
                         <img src="AYBER.ico" alt="Logo" class="h-11 w-11 mr-2">
-                        <span class="text-500">AYBER</span>
+                        <span class="text-white">AYBER</span>
                     </a>
                 </div>
-                <!-- Liens de la navbar -->
-                <div class="hidden md:flex space-x-6">
-                    <a href="#home" class="text-gray-800 hover:text-blue-500 transition duration-300">Home</a>
-                    <a href="#about" class="text-gray-800 hover:text-blue-500 transition duration-300">About</a>
-                    <a href="#contact" class="text-gray-800 hover:text-blue-500 transition duration-300">Contact</a>
-                    <a href="{{ route('login') }}" class="text-gray-800 hover:text-blue-500 transition duration-300">Login</a>
-                    <a href="{{ route('register') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Register</a>
-                </div>
-                <!-- Bouton de menu mobile -->
+                
+                
+        <div class="hidden md:flex space-x-6">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="{{ route('login') }}" class="nav-link">Login</a>
+            <a href="{{ route('register') }}" class="nav-link">Register</a>
+        </div>
+    
+
+<style>
+    .nav-link {
+        position: relative;
+        color: white;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-link:hover {
+        color: #3b82f6;
+    }
+
+    .nav-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    .register-btn {
+        background-color: #3b82f6;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .register-btn:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
-            <!-- Menu mobile -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                <a href="#home" class="block text-gray-800 hover:text-blue-500 py-2">Home</a>
-                <a href="#about" class="block text-gray-800 hover:text-blue-500 py-2">About</a>
-                <a href="#contact" class="block text-gray-800 hover:text-blue-500 py-2">Contact</a>
-                <a href="{{ route('login') }}" class="block text-gray-800 hover:text-blue-500 py-2">Login</a>
-                <a href="{{ route('register') }}" class="block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Register</a>
-            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-80 p-4 mt-4 rounded-lg">
+            <a href="#home" class="block text-white hover:text-blue-400 py-2">Home</a>
+            <a href="#about" class="block text-white hover:text-blue-400 py-2">About</a>
+            <a href="#contact" class="block text-white hover:text-blue-400 py-2">Contact</a>
+            <a href="{{ route('login') }}" class="block text-white hover:text-blue-400 py-2">Login</a>
+            <a href="{{ route('register') }}" class="block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Register</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <!-- Vidéo en arrière-plan -->
-        <video autoplay muted loop>
-            <source src="/video1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <!-- Contenu de la section hero -->
-        <div class="hero-content">
-            <h1 class="text-5xl md:text-6xl font-bold">Welcome to AYBER</h1>
-            <p class="mt-4 text-xl md:text-2xl">Your Ultimate Project Management Solution</p>
-            <div class="mt-8">
-                <a href="{{ route('register') }}" class="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Get Started</a>
-            </div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+        <h1 class="text-5xl md:text-6xl font-bold">Welcome to AYBER</h1>
+        <p class="mt-4 text-xl md:text-2xl">Your Ultimate Project Management Solution</p>
+        <div class="mt-8">
+            <a href="{{ route('register') }}" class="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Get Started</a>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- About Section -->
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
+
     <section id="about" class="container mx-auto px-4 py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">About Us</h2>
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -160,7 +211,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
     <section id="contact" class="bg-gray-50 py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800">Contact Us</h2>
@@ -184,16 +235,14 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
     <footer class="bg-gray-800 py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- About Section -->
                 <div>
                     <h3 class="text-xl font-bold text-white">About AYBER</h3>
                     <p class="mt-4 text-gray-400">AYBER is a powerful project management tool designed to help teams collaborate and manage tasks efficiently.</p>
                 </div>
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-xl font-bold text-white">Quick Links</h3>
                     <ul class="mt-4 space-y-2">

@@ -2,12 +2,10 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <!-- En-tête du projet -->
     <div class="mb-8">
         <h2 class="text-3xl font-bold text-gray-800">{{ $project->name }}</h2>
         <p class="mt-2 text-lg text-gray-600">{{ $project->description }}</p>
 
-        <!-- Lien GitHub -->
         <p class="mt-2 text-lg text-gray-600">
             <strong>Lien GitHub :</strong>
             <a href="{{ $project->github_link }}" class="text-blue-500 hover:underline" target="_blank">
@@ -15,7 +13,6 @@
             </a>
         </p>
 
-        <!-- Priorité du projet -->
         <p class="mt-2 text-lg text-gray-600">
             <strong>Priorité :</strong>
             <span class="font-medium {{ $project->priority == 'low' ? 'text-green-500' : ($project->priority == 'medium' ? 'text-yellow-500' : 'text-red-500') }}">
@@ -24,14 +21,12 @@
         </p>
     </div>
 
-    <!-- Bouton pour ouvrir le modal -->
     <div class="mb-6 flex justify-end">
         <button id="openModalButton" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
             Ajouter une Tâche
         </button>
     </div>
 
-    <!-- Liste des tâches -->
     <div class="mb-8">
         <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tâches</h3>
         <div class="space-y-4">
@@ -68,13 +63,11 @@
         </div>
     </div>
 
-    <!-- Modal -->
     <div id="taskModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h3 class="text-2xl font-semibold text-gray-800 mb-4">Ajouter une Tâche</h3>
             <form action="{{ route('tasks.store', $project) }}" method="POST" class="space-y-4">
                 @csrf
-                <!-- Titre de la tâche -->
                 <div>
                     <input type="text" name="title" placeholder="Nom de la tâche" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ old('title') }}" required>
                     @error('title')
@@ -82,7 +75,6 @@
                     @enderror
                 </div>
 
-                <!-- Description de la tâche -->
                 <div>
                     <textarea name="description" placeholder="Description de la tâche" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('description') }}</textarea>
                     @error('description')
@@ -90,7 +82,6 @@
                     @enderror
                 </div>
 
-                <!-- Statut de la tâche -->
                 <div>
                     <select name="status" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>En attente</option>
@@ -102,7 +93,6 @@
                     @enderror
                 </div>
 
-                <!-- Priorité de la tâche -->
                 <div>
                     <select name="priority" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="low" {{ old('priority') == 'low' ? 'selected' : '' }}>Faible</option>
@@ -114,7 +104,6 @@
                     @enderror
                 </div>
 
-                <!-- Date de début -->
                 <div>
                     <input type="date" name="start_date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ old('start_date') ?: date('Y-m-d') }}">
                     @error('start_date')
@@ -122,7 +111,6 @@
                     @enderror
                 </div>
 
-                <!-- Date de fin -->
                 <div>
                     <input type="date" name="end_date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ old('end_date') ?: date('Y-m-d') }}">
                     @error('end_date')
@@ -130,11 +118,9 @@
                     @enderror
                 </div>
 
-                <!-- Bouton de soumission -->
                 <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">Ajouter</button>
             </form>
 
-            <!-- Bouton de fermeture -->
             <button id="closeModalButton" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800">
                 &times;
             </button>

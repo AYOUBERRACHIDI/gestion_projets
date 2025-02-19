@@ -14,9 +14,9 @@ class TaskController extends Controller
         'title' => 'required|string|max:255',
         'description' => 'nullable|string',
         'status' => 'required|in:pending,in_progress,completed',
-        'priority' => 'required|in:low,medium,high', // Validation pour la priorité
-        'start_date' => 'nullable|date',             // Validation pour la date de début
-        'end_date' => 'nullable|date|after_or_equal:start_date', // Validation pour la date de fin
+        'priority' => 'required|in:low,medium,high', 
+        'start_date' => 'nullable|date',             
+        'end_date' => 'nullable|date|after_or_equal:start_date', 
     ]);
 
     $project->tasks()->create($request->all());
@@ -40,9 +40,9 @@ class TaskController extends Controller
         'title' => 'required|string|max:255',
         'description' => 'nullable|string',
         'status' => 'required|in:pending,in_progress,completed',
-        'priority' => 'required|in:low,medium,high', // Validation pour la priorité
-        'start_date' => 'nullable|date',             // Validation pour la date de début
-        'end_date' => 'nullable|date|after_or_equal:start_date', // Validation pour la date de fin
+        'priority' => 'required|in:low,medium,high', 
+        'start_date' => 'nullable|date',             
+        'end_date' => 'nullable|date|after_or_equal:start_date', 
     ]);
 
     $task->update($request->all());

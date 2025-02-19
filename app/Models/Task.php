@@ -24,10 +24,8 @@ class Task extends Model
     {
         return $this->belongsTo(Project::class);
     }
-    // Si tes dates sont dans des champs spécifiques
     protected $dates = ['start_date', 'end_date'];
 
-    // Si tu veux ajouter un format personnalisé
     public function getStartDateAttribute($value)
     {
         return Carbon::parse($value);

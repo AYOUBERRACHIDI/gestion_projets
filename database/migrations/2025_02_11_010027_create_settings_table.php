@@ -15,8 +15,8 @@ return new class extends Migration
 {
     Schema::create('settings', function (Blueprint $table) {
         $table->id();
-        $table->string('key')->unique(); // Clé du paramètre (ex: 'site_name')
-        $table->text('value')->nullable(); // Valeur du paramètre
+        $table->string('key')->unique(); 
+        $table->text('value')->nullable(); 
         $table->timestamps();
     });
 }

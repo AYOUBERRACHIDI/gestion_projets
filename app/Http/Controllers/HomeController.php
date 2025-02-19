@@ -15,13 +15,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Récupérer tous les projets de l'utilisateur connecté
+        
         $projects = Project::where('user_id', auth()->id())->get();
 
-        // Récupérer les tâches associées aux projets de l'utilisateur
+
+
         $tasks = Task::whereIn('project_id', $projects->pluck('id'))->get();
 
-        // Statistiques pour le tableau de bord
+
         $totalProjects = $projects->count();
         $completedTasks = $tasks->where('status', 'completed')->count();
         $pendingTasks = $tasks->where('status', 'pending')->count();

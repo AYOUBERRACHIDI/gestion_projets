@@ -12,7 +12,6 @@ class AddPriorityToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            // Ajouter la colonne priority
             $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
         });
     }
@@ -23,7 +22,6 @@ class AddPriorityToTasksTable extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            // Supprimer la colonne priority
             $table->dropColumn('priority');
         });
     }
