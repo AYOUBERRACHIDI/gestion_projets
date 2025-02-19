@@ -13,8 +13,21 @@
         <!-- Champ Titre -->
         <div class="mb-6">
             <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Titre de la tâche</label>
-            <input type="text" name="title" id="title" value="{{ $task->title }}" required
+            <input type="text" name="title" id="title" value="{{ old('title', $task->title) }}" required
                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            @error('title')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <!-- Champ Description -->
+        <div class="mb-6">
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description de la tâche</label>
+            <textarea name="description" id="description" rows="4" required
+                      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('description', $task->description) }}</textarea>
+            @error('description')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Champ Statut -->
@@ -26,6 +39,43 @@
                 <option value="in_progress" {{ $task->status == 'in_progress' ? 'selected' : '' }}>En cours</option>
                 <option value="completed" {{ $task->status == 'completed' ? 'selected' : '' }}>Terminée</option>
             </select>
+            @error('status')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <!-- Champ Priorité -->
+        <div class="mb-6">
+            <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">Priorité</label>
+            <select name="priority" id="priority"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="low" {{ $task->priority == 'low' ? 'selected' : '' }}>Faible</option>
+                <option value="medium" {{ $task->priority == 'medium' ? 'selected' : '' }}>Moyenne</option>
+                <option value="high" {{ $task->priority == 'high' ? 'selected' : '' }}>Élevée</option>
+            </select>
+            @error('priority')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <!-- Champ Date de début -->
+        <div class="mb-6">
+            <label for="start_date" class="block text-sm font-medium text-gray-700 mb-2">Date de début</label>
+            <input type="date" name="start_date" id="start_date" value="{{ old('start_date', $task->start_date ? $task->start_date->format('Y-m-d') : '') }}"
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            @error('start_date')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <!-- Champ Date de fin -->
+        <div class="mb-6">
+            <label for="end_date" class="block text-sm font-medium text-gray-700 mb-2">Date de fin</label>
+            <input type="date" name="end_date" id="end_date" value="{{ old('end_date', $task->end_date ? $task->end_date->format('Y-m-d') : '') }}"
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            @error('end_date')
+                <span class="text-sm text-red-500">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Bouton de soumission -->

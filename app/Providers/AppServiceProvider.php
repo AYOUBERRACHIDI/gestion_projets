@@ -25,9 +25,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
 {
     // Définir la langue de l'application
-    if (Auth::check()) {
-        $user = Auth::user();
-        App::setLocale($user->language);
-    }
+    // if (Auth::check()) {
+    //     $user = Auth::user();
+    //     App::setLocale($user->language);
+
+    // }
+    Schema::defaultStringLength(191);
 }
 }

@@ -24,6 +24,21 @@
                         </a>
                     </h5>
                     <p class="text-sm text-gray-500 mt-1">
+                        <strong>Description :</strong> {{ $project->description }}
+                    </p>
+                    <p class="text-sm text-gray-500 mt-1">
+                        <strong>Lien GitHub :</strong>
+                        <a href="{{ $project->github_link }}" class="text-blue-500 hover:underline" target="_blank">
+                            {{ $project->github_link }}
+                        </a>
+                    </p>
+                    <p class="text-sm text-gray-500 mt-1">
+                        <strong>Priorité :</strong>
+                        <span class="font-medium {{ $project->priority == 'low' ? 'text-green-500' : ($project->priority == 'medium' ? 'text-yellow-500' : 'text-red-500') }}">
+                            {{ ucfirst($project->priority) }}
+                        </span>
+                    </p>
+                    <p class="text-sm text-gray-500 mt-1">
                         Dernière mise à jour : {{ $project->updated_at->diffForHumans() }}
                     </p>
                 </div>
